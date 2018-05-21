@@ -15,7 +15,7 @@ object NewConfigSuggester {
     list1.intersect(list2).map(f => getMapping(f))
   }
 
-  private def getMapping[T](field: Field[T]): FieldMapping[T] = {
-    FieldMapping.apply(field, field, true, null.asInstanceOf[T])
+  private def getMapping[T](field: Field[T]) : FieldMapping[T] = {
+    FieldMapping.apply(field, field, true, null.asInstanceOf[String])
   }
 }

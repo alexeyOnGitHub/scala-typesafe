@@ -18,7 +18,7 @@ class ConfigStorageTest extends FunSpec with Matchers with ConfigsTempFolder {
       val storage = new ConfigStorage(folder)
       val mappings = Seq(
         FieldMapping(CustomString("str"), CustomString("another"), true, "default"),
-        FieldMapping(CustomDate("date1"), CustomDate("date2"), true, new Date())
+        FieldMapping(CustomDate("date1"), CustomDate("date2"), true, "")
       )
       val configId = storage.saveConfig(new UISyncConfig(mappings))
       //      val config = storage.getConfig(configId)

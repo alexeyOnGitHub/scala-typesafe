@@ -1,6 +1,7 @@
 package com.example.storage
 
 import com.example.model.{CustomDate, CustomFloat, CustomSeqString, CustomString, Field, FieldMapping, GUser}
+import io.circe.Decoder.Result
 import io.circe.generic.semiauto.{deriveDecoder, deriveEncoder}
 import io.circe.{Decoder, Encoder}
 import io.circe._
@@ -22,8 +23,4 @@ object CirceBoilerplateForConfigs {
   implicit val d4: Decoder[CustomSeqString] = deriveDecoder[CustomSeqString]
   implicit val e4: Encoder[CustomSeqString] = deriveEncoder[CustomSeqString]
 
-  implicit val fieldDecoder: Decoder[Field[_]] = deriveDecoder[Field[_]]
-  implicit val fieldEncoder: Encoder[Field[_]] = deriveEncoder[Field[_]]
-  implicit val fooDecoder: Decoder[FieldMapping[_]] = deriveDecoder[FieldMapping[_]]
-  implicit val fooEncoder: Encoder[FieldMapping[_]] = deriveEncoder[FieldMapping[_]]
 }

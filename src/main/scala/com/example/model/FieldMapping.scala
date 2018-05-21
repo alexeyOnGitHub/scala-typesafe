@@ -1,10 +1,9 @@
 package com.example.model
 
-
 object FieldMapping {
-  def apply[T](fieldInConnector1: Field[T], fieldInConnector2: Field[T], selected: Boolean, defaultValue: T): FieldMapping[T] = {
+  def apply[T](fieldInConnector1: Field[T], fieldInConnector2: Field[T], selected: Boolean, defaultValue: String): FieldMapping[T] = {
     FieldMapping(Some(fieldInConnector1), Some(fieldInConnector2), selected, defaultValue)
   }
 }
 
-case class FieldMapping[T](fieldInConnector1: Option[Field[T]], fieldInConnector2: Option[Field[T]], selected: Boolean, defaultValue: T)
+case class FieldMapping[T](fieldInConnector1: Option[Field[T]], fieldInConnector2: Option[Field[T]], selected: Boolean, defaultValue: String)

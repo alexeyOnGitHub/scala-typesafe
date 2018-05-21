@@ -3,36 +3,62 @@ package com.example.model
 import java.util
 import java.util.Date
 
-sealed abstract class Field[T](clazz: Class[T], val name: String)
+sealed abstract class Field[T](val name: String)
 
-object Assignee extends Field[GUser](classOf[GUser], "Assignee")
+object Field {
+  def apply(fieldName: String): Field[String] = {
+    CustomString(fieldName)
+  }
+}
 
-object Components extends Field[Seq[String]](classOf[Seq[String]], "Components")
+object Assignee extends Field[GUser]("Assignee")
 
-object EstimatedTime extends Field[Float](classOf[Float], "EstimatedTime")
+object Children extends Field[util.List[GTask]]("Children")
 
-object StartDate extends Field[Date](classOf[Date], "StartDate")
+object Components extends Field[Seq[String]]("Components")
 
-object Id extends Field[java.lang.Long](classOf[java.lang.Long], "Id")
+object ClosedOn extends Field[Date]("ClosedOn")
 
-object SourceSystemId extends Field[TaskId](classOf[TaskId], "SourceSystemId")
+object CreatedOn extends Field[Date]("CreatedOn")
 
-object Key extends Field[String](classOf[String], "Key")
+case class CustomDate(override val name: String) extends Field[Date](name)
 
-object ParentKey extends Field[TaskId](classOf[TaskId], "ParentKey")
+case class CustomFloat(override val name: String) extends Field[Float](name)
 
-object Priority extends Field[Int](classOf[Int], "Priority")
+case class CustomSeqString(override val name: String) extends Field[Seq[String]](name)
 
-object Summary extends Field[String](classOf[String], "Summary")
+case class CustomString(override val name: String) extends Field[String](name)
 
-object Children extends Field[util.List[GTask]](classOf[util.List[GTask]], "Children")
+object Description extends Field[String]("Description")
 
-object Relations extends Field[util.List[GRelation]](classOf[util.List[GRelation]], "Relations")
+object DoneRatio extends Field[Float]("DoneRatio")
 
-case class CustomString(override val name: String) extends Field[String](classOf[String], name)
+object DueDate extends Field[Date]("DueDate")
 
-case class CustomDate(override val name: String) extends Field[Date](classOf[Date], name)
+object EstimatedTime extends Field[Float]("EstimatedTime")
 
-case class CustomFloat(override val name: String) extends Field[Float](classOf[Float], name)
+object Id extends Field[java.lang.Long]("Id")
 
-case class CustomSeqString(override val name: String) extends Field[Seq[String]](classOf[Seq[String]], name)
+object Key extends Field[String]("Key")
+
+object ParentKey extends Field[TaskId]("ParentKey")
+
+object Priority extends Field[Int]("Priority")
+
+object Relations extends Field[util.List[GRelation]]("Relations")
+
+object Reporter extends Field[GUser]("Reporter")
+
+object SourceSystemId extends Field[TaskId]("SourceSystemId")
+
+object StartDate extends Field[Date]("StartDate")
+
+object Summary extends Field[String]("Summary")
+
+object TaskType extends Field[String]("TaskType")
+
+object TaskStatus extends Field[String]("Status")
+
+object TargetVersion extends Field[String]("TargetVersion")
+
+object UpdatedOn extends Field[Date]("UpdatedOn")
